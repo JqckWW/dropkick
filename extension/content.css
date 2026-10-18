@@ -1,0 +1,17 @@
+/*
+ * DropKick — every rule is scoped to html[data-dropkick-mode], which content.js sets, so nothing here
+ * applies in original mode and removing the attribute restores Shopify's own styles.
+ *
+ * Anchors are Shopify's data attributes (see "Maintaining" in README.md), never generated class names:
+ *   surface  [data-frame-footer-outlet="center"] section:has([data-sidekick-field])
+ *   feather  [data-frame-footer-outlet="center"] [data-floating-sidekick-page-feather]
+ *
+ * Both "hidden" and "sidebar" take the floating bar off the page. In "sidebar" content.js also adds a
+ * Sidekick item above Settings that opens Sidekick's side panel. The bar stays in the DOM (just not
+ * rendered) because its open button is what that item clicks.
+ */
+
+html[data-dropkick-mode] [data-frame-footer-outlet="center"] section:has([data-sidekick-field]),
+html[data-dropkick-mode] [data-frame-footer-outlet="center"] [data-floating-sidekick-page-feather] {
+  display: none !important;
+}

@@ -1,0 +1,176 @@
+/*
+ * Styles for the Shopify Admin replica (see admin.js). Layout and the properties DropKick's behaviour
+ * depends on (positioning, pointer-events, the footer container query, Sidekick's transitions) follow
+ * the live admin; colours and spacing are approximate.
+ */
+:root {
+  --_nav-w: 220px;
+  --_topbar-h: 56px;
+  --_panel-w: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  color: #303030;
+}
+html, body { margin: 0; padding: 0; background: #f1f1f1; }
+* { box-sizing: border-box; }
+button { font: inherit; }
+
+._Frame_k3j9d_1._NavCollapsed_k3j9d_44 { --_nav-w: 60px; }
+._Frame_k3j9d_1._PanelOpen_k3j9d_51 { --_panel-w: 360px; }
+
+/* ---------- top bar ---------- */
+._TopBar_p8x2a_3 {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--_topbar-h);
+  z-index: 200; background: #1a1a1a; color: #e3e3e3;
+  display: flex; align-items: center; gap: 12px; padding: 0 12px;
+}
+._TopBarToggle_p8x2a_19 {
+  width: 32px; height: 32px; border-radius: 8px; border: 0; background: #303030; color: #fff; cursor: pointer;
+}
+._TopBarSearch_p8x2a_27 {
+  flex: 0 1 480px; margin: 0 auto; height: 34px; border-radius: 10px; background: #303030;
+  display: flex; align-items: center; padding: 0 12px; color: #8a8a8a;
+}
+
+/* ---------- navigation ---------- */
+#AppFrameNav {
+  position: fixed; top: var(--_topbar-h); left: 0; bottom: 0;
+  width: var(--_nav-w);
+  z-index: 10;
+  background: #ebebeb;
+  transition: width 150ms ease;
+  overflow: hidden;
+}
+._Navigation_q2w7e_5 { display: flex; flex-direction: column; height: 100%; width: 100%; }
+._PrimaryNavigation_q2w7e_12 {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8px 8px 0;
+}
+._Section_q2w7e_20 { list-style: none; margin: 0 0 8px; padding: 0; }
+._SectionHeading_q2w7e_24 {
+  height: 28px; line-height: 28px; padding: 0 8px; color: #616161; font-weight: 600; font-size: 12px;
+  white-space: nowrap; overflow: hidden;
+}
+._ListItem_q2w7e_31 { margin: 0; padding: 0; }
+._Item_q2w7e_35 {
+  display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 8px; border-radius: 8px;
+  color: #303030; text-decoration: none; white-space: nowrap; overflow: hidden;
+}
+._Item_q2w7e_35:hover { background: #e3e3e3; }
+._Item-selected_q2w7e_40 { background: #fafafa; font-weight: 600; }
+._Icon_q2w7e_44 { flex: none; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; }
+s-internal-icon { display: inline-block; width: 20px; height: 20px; flex: none; }
+.Polaris-Text--root { font: inherit; }
+.Polaris-Text--bodyMd { font-size: 13px; line-height: 20px; }
+._Text_q2w7e_48 { overflow: hidden; text-overflow: ellipsis; }
+
+[data-sticky-bottom-nav] {
+  flex: none; padding: 8px 8px 12px; border-top: 1px solid #dcdcdc; background: #ebebeb;
+}
+._StoreSwitcher_m5n6b_9 {
+  display: flex; align-items: center; gap: 8px; width: 100%; height: 44px; margin-top: 4px;
+  padding: 0 6px; border: 0; border-radius: 8px; background: transparent; cursor: pointer;
+  white-space: nowrap; overflow: hidden; text-align: left;
+}
+._Avatar_m5n6b_17 {
+  flex: none; width: 28px; height: 28px; border-radius: 7px; background: #36fba1; color: #000;
+  display: grid; place-items: center; font-weight: 700;
+}
+._StoreName_m5n6b_23 { display: flex; flex-direction: column; line-height: 1.2; }
+
+._NavCollapsed_k3j9d_44 ._Text_q2w7e_48,
+._NavCollapsed_k3j9d_44 ._SectionHeading_q2w7e_24,
+._NavCollapsed_k3j9d_44 ._StoreName_m5n6b_23 { display: none; }
+._NavCollapsed_k3j9d_44 ._Item_q2w7e_35 { justify-content: center; padding: 0; width: 32px; margin: 0 auto; }
+
+._NavHidden_k3j9d_60 #AppFrameNav { display: none; }
+._NavHidden_k3j9d_60 { --_nav-w: 0px; }
+
+/* ---------- main ---------- */
+#AppFrameMain {
+  margin-left: var(--_nav-w);
+  margin-right: var(--_panel-w);
+  padding: calc(var(--_topbar-h) + 16px) 24px 120px;
+  transition: margin-left 150ms ease;
+}
+._Page_z1x2c_8 { max-width: 998px; margin: 0 auto; }
+._PageTitle_z1x2c_12 { font-size: 20px; margin: 0 0 16px; }
+._Card_z1x2c_16 { background: #fff; border-radius: 12px; box-shadow: 0 1px 0 #d4d4d4; overflow: hidden; }
+._Row_z1x2c_20 { display: flex; gap: 16px; height: 40px; align-items: center; padding: 0 16px; border-top: 1px solid #ebebeb; }
+._EmbeddedApp_z1x2c_30 { width: 100%; height: 320px; border: 0; background: #fff; border-radius: 12px; margin-top: 16px; }
+
+/* ---------- frame footer (Sidekick bar) ---------- */
+[data-polaris-frame-global-ribbon] {
+  position: fixed;
+  z-index: 100;
+  left: var(--_nav-w);
+  right: var(--_panel-w);
+  bottom: 0;
+  transition: left 150ms ease;
+}
+[data-frame-footer-root] {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  container-type: inline-size;
+}
+[data-frame-footer] {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 16px;
+  padding: 0 16px 16px;
+}
+[data-frame-footer-outlet="start"] { justify-self: start; pointer-events: auto; }
+[data-frame-footer-outlet="center"] { display: flex; justify-content: center; pointer-events: none; }
+[data-frame-footer-outlet="end"] { justify-self: end; pointer-events: auto; }
+
+._Pagination_r4t5y_3 { display: flex; gap: 4px; background: #fff; border-radius: 10px; padding: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+._PaginationButton_r4t5y_7 { width: 28px; height: 28px; border: 0; border-radius: 6px; background: #f1f1f1; cursor: pointer; }
+
+._Slot_h7j8k_2 { display: flex; justify-content: center; }
+._FieldLayer_h7j8k_6 { position: relative; }
+[data-floating-sidekick-page-feather] {
+  position: absolute; left: -120px; right: -120px; bottom: -16px; height: 110px;
+  background: linear-gradient(to top, rgba(241,241,241,1) 30%, rgba(241,241,241,0));
+  pointer-events: none;
+}
+section[aria-label="Sidekick"] {
+  position: relative;
+  pointer-events: auto;
+  transform: translateY(0);
+  /* Durations as in the live admin. */
+  transition: transform 0.7s cubic-bezier(0.19, 0.91, 0.38, 1), visibility 0s,
+    inline-size 0.3s ease, inset-inline-start 0.25s ease, inset-inline-end 0.25s ease;
+}
+section[aria-label="Sidekick"][data-visible="false"] {
+  visibility: hidden;
+  height: 0;
+  transform: translateY(calc(100% + 24px));
+}
+._FocusCapture_h7j8k_30 { display: contents; }
+[data-sidekick-field] {
+  display: flex; align-items: center; gap: 2px;
+  width: 376px; height: 44px; padding: 0 6px 0 14px;
+  border-radius: 22px; background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 6px 16px rgba(0,0,0,.12);
+}
+@container (max-width: 560px) {
+  ._FieldLayer_h7j8k_6 [data-sidekick-field] { width: calc(100cqw - 32px); }
+}
+._Input_h7j8k_44 { flex: 1 1 auto; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; height: 32px; }
+._FieldButton_h7j8k_48 { flex: none; width: 30px; height: 30px; border: 0; border-radius: 15px; background: #f1f1f1; cursor: pointer; }
+
+/* ---------- Sidekick side panel ---------- */
+._SidekickPanel_w2e3r_1 {
+  position: fixed; top: var(--_topbar-h); right: 0; bottom: 0; width: 360px; z-index: 150;
+  background: #fff; border-left: 1px solid #dcdcdc;
+  display: flex; flex-direction: column; justify-content: space-between; padding: 12px;
+}
+._SidekickPanel_w2e3r_1 [data-sidekick-field] { width: 100%; }
+
+/* ---------- narrow viewport: Polaris moves the nav off-canvas ---------- */
+@media (max-width: 767.98px) {
+  :root { --_nav-w: 0px !important; }
+  ._Frame_k3j9d_1 { --_nav-w: 0px !important; }
+  #AppFrameNav { width: 240px; transform: translateX(-100%); }
+}

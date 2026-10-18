@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DropKick</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="card">
+    <header class="header">
+      <img class="logo" src="icons/icon-48.png" width="28" height="28" alt="">
+      <div>
+        <h1>DropKick</h1>
+        <p class="subdued">Hide the floating AI bar in Shopify Admin</p>
+      </div>
+    </header>
+
+    <div class="divider" role="presentation"></div>
+
+    <fieldset class="choices">
+      <legend class="visually-hidden">Sidekick bar position</legend>
+
+      <label class="choice">
+        <input type="radio" name="mode" value="original">
+        <span class="choice-text">
+          <span class="choice-label">Show in original position</span>
+          <span class="choice-help">Shopify's default floating bar.</span>
+        </span>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="mode" value="sidebar">
+        <span class="choice-text">
+          <span class="choice-label">Move to left sidebar</span>
+          <span class="choice-help">Adds a Sidekick item above Settings.</span>
+        </span>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="mode" value="hidden">
+        <span class="choice-text">
+          <span class="choice-label">Hide</span>
+          <span class="choice-help">Removes the floating bar.</span>
+        </span>
+      </label>
+    </fieldset>
+
+    <div class="divider" role="presentation"></div>
+
+    <footer class="footer">
+      <span id="status" class="badge" role="status" aria-live="polite"></span>
+      <button type="button" id="reset" class="button">Restore default</button>
+    </footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
